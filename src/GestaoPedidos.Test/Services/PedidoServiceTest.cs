@@ -43,7 +43,7 @@ namespace GestaoPedidos.Tests
         }
 
         [Fact]
-        public async Task AtualizarPedido_CallsUpdateMethod_WithCorrectParameters()
+        public void AtualizarPedido_CallsUpdateMethod_WithCorrectParameters()
         {
             // Arrange
             Pedido pedido = new () {DataPedido = DateTime.Now, Status = Status.Solicitado, Id = 1, HorarioFim = DateTime.Now, HorarioInicio = DateTime.Now.AddHours(2), ValorPedido = 150.00m};
@@ -57,7 +57,7 @@ namespace GestaoPedidos.Tests
         }
 
         [Fact]
-        public async Task ObterPedido_ReturnsExpectedPedido()
+        public void ObterPedido_ReturnsExpectedPedido()
         {
             // Arrange
             var pedidoId = 1;
@@ -73,7 +73,7 @@ namespace GestaoPedidos.Tests
         }
 
         [Fact]
-        public async Task ObterTodosPedidos_ReturnsExpectedPedidos()
+        public void ObterTodosPedidos_ReturnsExpectedPedidos()
         {
             // Arrange
             var clienteId = 1;
@@ -93,7 +93,7 @@ namespace GestaoPedidos.Tests
         }
 
         [Fact]
-        public async Task DeletarPedido_CallsDeleteMethod_WithCorrectParameters()
+        public void DeletarPedido_CallsDeleteMethod_WithCorrectParameters()
         {
             // Arrange
             var pedidoId = 1;

@@ -73,7 +73,7 @@ namespace GestaoPedidos.Application.Services
             return pedido.Status;
         }
 
-        private Status ProximoEtapaStatus(Status status)
+        private static Status ProximoEtapaStatus(Status status)
         {
             if (status is Status.Finalizado)
                 return Status.Finalizado;
