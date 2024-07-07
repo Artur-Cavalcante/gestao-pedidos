@@ -33,7 +33,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=gestao-pedidos-pedido
-            -Dsonar.cs.opencover.reportsPaths=src/GestaoPedidos.Test/TestResults
+            -Dsonar.cs.opencover.reportsPaths=src/GestaoPedidos.Test/TestResults/*/*.coverage
             -Dsonar.tests=src/GestaoPedidos.Test
         
 
