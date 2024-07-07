@@ -24,6 +24,8 @@ jobs:
         
       - name: Upload SonarQube analysis
         uses: sonarsource/sonarqube-scan-action@master
+        run:
+          dotnet test --collect "Code Coverage"
         env:
           SONAR_TOKEN: sqa_b632c864822aeae6d1e1c5f000363596eeb65460
           SONAR_HOST_URL: http://54.161.116.110:9000 # Replace with your SonarQube server URL
@@ -33,6 +35,8 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=gestao-pedidos-pedido
+            -Dsonar.cs.opencover.reportsPaths=src/GestaoPedidos.Test/TestResults # Path to opencover.xml if using OpenCover for coverage
+            -Dsonar.tests=src/GestaoPedidos.Test # Directory containing tests
         
 
       - name: Configure AWS credentials
