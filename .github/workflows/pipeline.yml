@@ -17,6 +17,10 @@ jobs:
         run: |
           dotnet test --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
+      - name: List
+        run:
+          ls -la ./src/GestaoPedidos.Test/
+
       - name: Upload SonarQube analysis
         uses: sonarsource/sonarqube-scan-action@master
         env:
