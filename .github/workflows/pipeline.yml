@@ -17,10 +17,6 @@ jobs:
         run: |
           dotnet test --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
-      - name: List
-        run:
-          ls -la ./src/GestaoPedidos.Test/
-
       - name: Upload SonarQube analysis
         uses: sonarsource/sonarqube-scan-action@master
         env:
@@ -32,7 +28,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=gestao-pedidos-pedido
-            -Dsonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.opencover.xml
+            -Dsonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.json
             -Dsonar.tests=./src/GestaoPedidos.Test
             -Dsonar.verbose=true
             
