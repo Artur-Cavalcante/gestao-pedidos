@@ -10,13 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: Build Check
-        run: 
-          ls -la 
+        run: | 
+          cd src
+          dotnet build .
       
       - name: Generate coverage report
-        run: |
-          dotnet build
+        run:
           dotnet test --filter TestCategory=Unit --logger "coverage" --verbosity normal --no-build
         
       - name: Upload SonarQube analysis
@@ -27,9 +30,6 @@ jobs:
           SONAR_PROJECT_KEY: gestao-pedidos-pedido # Replace with your project key
           SONAR_ORGANIZATION_KEY: fiap
           SONAR_QUALITY_PROFILE: 'default'
-              
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
