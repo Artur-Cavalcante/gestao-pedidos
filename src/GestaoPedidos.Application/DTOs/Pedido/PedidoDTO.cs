@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using GestaoPedidos.Domain.Enums;
 
 namespace GestaoPedidos.Application.DTOs.Pedido;
 
+[ExcludeFromCodeCoverage]
 public class PedidoDTO
 {
     public int Id { get; set; }

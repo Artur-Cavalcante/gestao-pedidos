@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics.CodeAnalysis;
+using AutoMapper;
 using GestaoPedidos.Application.DTOs.Usuario;
 using GestaoPedidos.Domain.Entities;
 using GestaoPedidos.Infrastructure.Data.Entities.Usuarios;
 
 namespace GestaoPedidos.Application.Mappings
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioMappingProfile : Profile
     {
         public UsuarioMappingProfile()

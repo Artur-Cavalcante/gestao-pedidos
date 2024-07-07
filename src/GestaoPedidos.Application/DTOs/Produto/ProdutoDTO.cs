@@ -1,6 +1,9 @@
-﻿namespace GestaoPedidos.Application.DTOs.Produto
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GestaoPedidos.Application.DTOs.Produto
 {
-    public class ProdutoDTO
+[ExcludeFromCodeCoverage]
+public class ProdutoDTO
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -9,7 +12,8 @@
         public int IdCategoria { get; set; }
     }
 
-    public class CategoriaProdutoDTO
+[ExcludeFromCodeCoverage]
+public class CategoriaProdutoDTO
     {
         public int Id { get; set; }
         public string Nome { get; set; }

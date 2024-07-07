@@ -1,6 +1,10 @@
-﻿namespace GestaoPedidos.Application.DTOs.Usuario
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GestaoPedidos.Application.DTOs.Usuario
 {
-    public class UsuarioDTO
+    
+[ExcludeFromCodeCoverage]
+public class UsuarioDTO
     {
         public int Id { get; set; }
         public string Nome { get; set; }

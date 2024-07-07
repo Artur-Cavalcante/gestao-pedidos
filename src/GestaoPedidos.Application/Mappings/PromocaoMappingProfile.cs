@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics.CodeAnalysis;
+using AutoMapper;
 using GestaoPedidos.Application.DTOs.Promocao;
 using GestaoPedidos.Domain.Entities;
 using GestaoPedidos.Infrastructure.Data.Entities.Promocoes;
 
 namespace GestaoPedidos.Application.Mappings
 {
+    [ExcludeFromCodeCoverage]
     public class PromocaoMappingProfile : Profile
     {
         public PromocaoMappingProfile()

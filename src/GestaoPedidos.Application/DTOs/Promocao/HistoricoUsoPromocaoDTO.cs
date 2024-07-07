@@ -1,6 +1,9 @@
-﻿namespace GestaoPedidos.Application.DTOs.Promocao
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GestaoPedidos.Application.DTOs.Promocao
 {
-    public class HistoricoUsoPromocaoDTO
+[ExcludeFromCodeCoverage]
+public class HistoricoUsoPromocaoDTO
     {
         public int IdPromocao { get; set; }
         public int IdCliente { get; set; }

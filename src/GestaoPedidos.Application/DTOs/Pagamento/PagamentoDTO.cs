@@ -1,7 +1,10 @@
-﻿using GestaoPedidos.Domain.Enums;
+﻿using System.Diagnostics.CodeAnalysis;
+using GestaoPedidos.Domain.Enums;
 
 namespace GestaoPedidos.Application.DTOs.Pagamento
 {
+    
+    [ExcludeFromCodeCoverage]
     public class PagamentoDTO
     {
         public int Id { get; set; }

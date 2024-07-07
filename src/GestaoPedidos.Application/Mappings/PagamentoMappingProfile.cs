@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics.CodeAnalysis;
+using AutoMapper;
 using GestaoPedidos.Domain.Entities;
 using GestaoPedidos.Application.DTOs.Pagamento;
 using GestaoPedidos.Infrastructure.Data.Entities.Pagamentos;
 
 namespace GestaoPedidos.Application.Mappings
 {
+    [ExcludeFromCodeCoverage]
     public class PagamentoMappingProfile : Profile
     {
         public PagamentoMappingProfile()

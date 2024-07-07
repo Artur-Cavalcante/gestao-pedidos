@@ -1,9 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
 using AutoMapper;
 using GestaoPedidos.Application.DTOs.Pedido;
 using GestaoPedidos.Infrastructure.Data.Entities.Pedidos;
 
 namespace GestaoPedidos.Application.Mappings;
 
+[ExcludeFromCodeCoverage]
 public class PedidoMappingProfile : Profile
 {
     public PedidoMappingProfile()

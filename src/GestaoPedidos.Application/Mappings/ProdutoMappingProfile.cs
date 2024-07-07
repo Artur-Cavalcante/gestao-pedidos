@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics.CodeAnalysis;
+using AutoMapper;
 using GestaoPedidos.Application.DTOs.Produto;
 using GestaoPedidos.Domain.Entities;
 using GestaoPedidos.Infrastructure.Data.Entities.Produtos;
 
 namespace GestaoPedidos.Application.Mappings
 {
+    [ExcludeFromCodeCoverage]
     public class ProdutoMappingProfile : Profile
     {
         public ProdutoMappingProfile()

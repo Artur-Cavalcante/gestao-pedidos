@@ -4,7 +4,7 @@ namespace GestaoPedidos.Domain.Entities
 {
     public class Pagamento : Entidade
     {
-        public Pagamento(int id, int idPedido, StatusPagamento status)
+        public  Pagamento(int id, int idPedido, StatusPagamento status)
         {
             Id = id;
             Status = status;

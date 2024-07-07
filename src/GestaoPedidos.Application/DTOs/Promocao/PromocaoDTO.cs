@@ -1,6 +1,9 @@
-﻿namespace GestaoPedidos.Application.DTOs.Promocao
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GestaoPedidos.Application.DTOs.Promocao
 {
-    public class PromocaoDTO
+[ExcludeFromCodeCoverage]
+public class PromocaoDTO
     {
         public int Id { get; set; }
         public string Texto { get; set; }
