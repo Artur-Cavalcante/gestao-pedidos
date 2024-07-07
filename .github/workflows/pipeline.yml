@@ -41,25 +41,6 @@ jobs:
       - name: Sonarqube End
         run: |
           dotnet sonarscanner end /d:sonar.login=sqa_b632c864822aeae6d1e1c5f000363596eeb65460
-          
-#      - name: Upload SonarQube analysis
-#        uses: sonarsource/sonarqube-scan-action@master
-#        env:
-#          SONAR_TOKEN: sqa_b632c864822aeae6d1e1c5f000363596eeb65460
-#          SONAR_HOST_URL: http://54.161.116.110:9000 
-#          SONAR_PROJECT_KEY: gestao-pedidos-pedido 
-#          SONAR_ORGANIZATION_KEY: fiap
-#          SONAR_QUALITY_PROFILE: 'default'
-#        with:
-#          args: >
-#            -Dsonar.projectKey=gestao-pedidos-pedido
-#            -Dsonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.json
-#            -Dsonar.tests=./src/GestaoPedidos.Test
-#            -Dsonar.verbose=true
-            
-        #-Dsonar.coverage.exclusions=true
-        #-Dsonar.coverage.exclusions=true
-        #-Dsonar.coverage.exclusions=true
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
