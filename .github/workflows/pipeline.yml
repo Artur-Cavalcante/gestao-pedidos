@@ -12,17 +12,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Build Check
-        run: | 
-          cd src
-          dotnet build .
       
       - name: Generate Coverage Xml
         run: |
-          dotnet tool install --global coverlet.console &&
-          dotnet build . &&
-          coverlet ./src/GestaoPedidos.Test/bin/Debug/net8.0/GestaoPedidos.Test.dll --target "dotnet"  --targetargs "test"    -o="./src/GestaoPedidos.Test/TestResults/coverage.xml"
+          dotnet test --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
       - name: Upload SonarQube analysis
         uses: sonarsource/sonarqube-scan-action@master
@@ -35,10 +28,13 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=gestao-pedidos-pedido
-            -Dsonar.cs.opencover.reportsPaths=./src/**/coverage.xml
+            -Dsonar.cs.opencover.reportsPaths=./src/**/coverage.opencover.xml
             -Dsonar.tests=./src/GestaoPedidos.Test
             -Dsonar.verbose=true
-        
+            
+        #-Dsonar.coverage.exclusions=true
+        #-Dsonar.coverage.exclusions=true
+        #-Dsonar.coverage.exclusions=true
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
