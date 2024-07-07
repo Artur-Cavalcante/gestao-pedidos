@@ -26,15 +26,15 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: sqa_b632c864822aeae6d1e1c5f000363596eeb65460
-          SONAR_HOST_URL: http://54.161.116.110:9000 # Replace with your SonarQube server URL
-          SONAR_PROJECT_KEY: gestao-pedidos-pedido # Replace with your project key
+          SONAR_HOST_URL: http://54.161.116.110:9000 
+          SONAR_PROJECT_KEY: gestao-pedidos-pedido 
           SONAR_ORGANIZATION_KEY: fiap
           SONAR_QUALITY_PROFILE: 'default'
         with:
           args: >
             -Dsonar.projectKey=gestao-pedidos-pedido
             -Dsonar.cs.opencover.reportsPaths=src/GestaoPedidos.Test/TestResults
-            -Dsonar.tests=src/GestaoPedidos.Test # Directory containing tests
+            -Dsonar.tests=src/GestaoPedidos.Test
         
 
       - name: Configure AWS credentials
