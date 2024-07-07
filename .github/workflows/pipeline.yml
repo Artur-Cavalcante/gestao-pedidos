@@ -21,6 +21,7 @@ jobs:
       - name: Generate Coverage Xml
         run: |
           dotnet tool install --global coverlet.console &&
+          dotnet build . &&
           coverlet ./src/GestaoPedidos.Test/bin/Debug/net8.0/GestaoPedidos.Test.dll --target "dotnet"  --targetargs "test"    -o="./src/GestaoPedidos.Test/TestResults/coverage.xml"
 
       - name: Upload SonarQube analysis
