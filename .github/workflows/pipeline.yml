@@ -21,7 +21,7 @@ jobs:
       - name: Generate coverage report
         run:
           dotnet test --collect "Code Coverage" --filter TestCategory=Unit --logger "coverage" --verbosity normal --no-build
-        
+        g
       - name: Upload SonarQube analysis
         uses: sonarsource/sonarqube-scan-action@master
         env:
@@ -33,7 +33,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=gestao-pedidos-pedido
-            -Dsonar.cs.opencover.reportsPaths=src/GestaoPedidos.Test/TestResults # Path to opencover.xml if using OpenCover for coverage
+            -Dsonar.cs.opencover.reportsPaths=src/GestaoPedidos.Test/TestResults
             -Dsonar.tests=src/GestaoPedidos.Test # Directory containing tests
         
 
