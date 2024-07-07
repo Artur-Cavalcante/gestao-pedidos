@@ -11,8 +11,7 @@ jobs:
 
     steps:
       - name: Build Check
-        run: |
-          cd src
+        run:
           dotnet build --configuration Release --no-build .
       
       - name: Generate coverage report
@@ -46,7 +45,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          cd src
           docker build -t 547185396737.dkr.ecr.us-east-2.amazonaws.com/gestao-pedidos:latest .
           docker push 547185396737.dkr.ecr.us-east-2.amazonaws.com/gestao-pedidos:latest
 
