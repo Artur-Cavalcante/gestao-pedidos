@@ -23,7 +23,7 @@ jobs:
 
       - name: Sonarqube Begin
         run: |
-          dotnet tool install --global dotnet-sonarscanner --version 6.0.0
+          dotnet tool install --global dotnet-sonarscanner --version 5.14.0
           dotnet sonarscanner begin /o:fiap /k:gestao-pedidos-pedido /d:sonar.login=sqa_b632c864822aeae6d1e1c5f000363596eeb65460 /d:sonar.verbose=true /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url=http://54.161.116.110:9000
       
       - name: Dotnet Build
