@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Build Check
         run:
-          dotnet build
+          dotnet build .
       
       - name: Generate coverage report
         run: |
