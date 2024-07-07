@@ -12,10 +12,12 @@ jobs:
     steps:
       - name: Build Check
         run:
-          dotnet build --configuration Release --no-build .
+          dotnet build
       
       - name: Generate coverage report
-        run: dotnet test --filter TestCategory=Unit --logger "coverage" --verbosity normal --no-build
+        run: |
+          dotnet build
+          dotnet test --filter TestCategory=Unit --logger "coverage" --verbosity normal --no-build
         
       - name: Upload SonarQube analysis
         uses: SonarSource/sonarcloud-github-action@master
