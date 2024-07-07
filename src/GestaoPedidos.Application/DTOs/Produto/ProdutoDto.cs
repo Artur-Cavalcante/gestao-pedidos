@@ -3,7 +3,7 @@
 namespace GestaoPedidos.Application.DTOs.Produto
 {
 [ExcludeFromCodeCoverage]
-public class ProdutoDTO
+public class ProdutoDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }  = string.Empty;
@@ -13,7 +13,7 @@ public class ProdutoDTO
     }
 
 [ExcludeFromCodeCoverage]
-public class CategoriaProdutoDTO
+public class CategoriaProdutoDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }  = string.Empty;

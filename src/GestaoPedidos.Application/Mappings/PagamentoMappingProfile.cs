@@ -11,10 +11,10 @@ namespace GestaoPedidos.Application.Mappings
     {
         public PagamentoMappingProfile()
         {
-            CreateMap<Pagamento, PagamentoDTO>();
+            CreateMap<Pagamento, PagamentoDto>();
             CreateMap<Pagamento, PagamentoEntity>();
             CreateMap<PagamentoEntity, Pagamento>().ConstructUsing(p => new Pagamento(p.Id, p.IdPedido, p.Status));
-            CreateMap<PagamentoDTO, Pagamento>().ConstructUsing(p => new Pagamento(p.Id, p.IdPedido, p.Status));
+            CreateMap<PagamentoDto, Pagamento>().ConstructUsing(p => new Pagamento(p.Id, p.IdPedido, p.Status));
         }
     }
 }

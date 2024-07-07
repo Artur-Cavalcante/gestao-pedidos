@@ -5,7 +5,7 @@ namespace GestaoPedidos.Application.DTOs.Pagamento
 {
     
     [ExcludeFromCodeCoverage]
-    public class PagamentoDTO
+    public class PagamentoDto
     {
         public int Id { get; set; }
         public int IdPedido { get; set; }

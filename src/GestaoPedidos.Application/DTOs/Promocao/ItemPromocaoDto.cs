@@ -3,7 +3,7 @@
 namespace GestaoPedidos.Application.DTOs.Promocao
 {
 [ExcludeFromCodeCoverage]
-public class ItemPromocaoDTO
+public class ItemPromocaoDto
     {
         public int IdPromocao { get; set; }
         public int IdProduto { get; set; }

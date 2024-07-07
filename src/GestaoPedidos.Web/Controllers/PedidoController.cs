@@ -51,16 +51,16 @@ public class PedidoController : ControllerBase
     /// <response code="200">Dados do cliente encontrado</response>
     /// <response code="404">Cliente não encontrado</response>
     [HttpGet("{id:int:required}")]
-    [ProducesResponseType(typeof(PedidoDTO), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PedidoDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public ActionResult<PedidoDTO> Get(int id)
+    public ActionResult<PedidoDto> Get(int id)
     {
         var pedido = _pedidoService.ObterPedido(id);
 
         if (pedido is null)
             return NotFound("Pedido não encontrado");
 
-        return _mapper.Map<PedidoDTO>(pedido);
+        return _mapper.Map<PedidoDto>(pedido);
     }
 
     /// <summary>
@@ -69,12 +69,12 @@ public class PedidoController : ControllerBase
     /// <param name="id"></param>
     /// <response code="200">Lista de pedidos</response>
     [HttpGet("get-all")]
-    [ProducesResponseType(typeof(IEnumerable<PedidoDTO>), StatusCodes.Status200OK)]
-    public IEnumerable<PedidoDTO> GetAll([FromQuery] int? idCliente, Status? statusPedido)
+    [ProducesResponseType(typeof(IEnumerable<PedidoDto>), StatusCodes.Status200OK)]
+    public IEnumerable<PedidoDto> GetAll([FromQuery] int? idCliente, Status? statusPedido)
     {
         var listaPedidos = _pedidoService.ObterTodosPedidos(idCliente, statusPedido);
 
-        return _mapper.Map<IEnumerable<PedidoDTO>>(listaPedidos);
+        return _mapper.Map<IEnumerable<PedidoDto>>(listaPedidos);
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class PedidoController : ControllerBase
     [HttpPut]
     [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public ActionResult Put([FromBody] AtualizarPedidoDTO dto)
+    public ActionResult Put([FromBody] AtualizarPedidoDto dto)
     {
         var pedido = _mapper.Map<Pedido>(dto);
         var sucesso = _pedidoService.AtualizarPedido(pedido);

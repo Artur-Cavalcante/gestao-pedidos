@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace GestaoPedidos.Application.DTOs.Cliente;
 
 [ExcludeFromCodeCoverage]
-public class ClienteDTO
+public class ClienteDto
 {
     public int Id { get; set; }
     public string Nome { get; set; }  = string.Empty;

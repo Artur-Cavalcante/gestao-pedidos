@@ -28,12 +28,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Categorias consultadas</response>
         /// <response code="404">Categorias nao encontradas</response>
         [HttpGet]
-        [ProducesResponseType(typeof(CategoriaProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(CategoriaProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<IEnumerable<CategoriaProdutoDTO>> Get()
+        public async Task<IEnumerable<CategoriaProdutoDto>> Get()
         {
             var categorias = await _categoriaProdutoService.ObterCategoriaProduto();
-            return _mapper.Map<IEnumerable<CategoriaProdutoDTO>>(categorias);
+            return _mapper.Map<IEnumerable<CategoriaProdutoDto>>(categorias);
         }
 
         /// <summary>
@@ -43,12 +43,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Categoria contultada</response>
         /// <response code="404">Categoria nao encontrada</response>
         [HttpGet("{categoriaId:int:required}")]
-        [ProducesResponseType(typeof(CategoriaProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(CategoriaProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<CategoriaProdutoDTO> Get(int categoriaId)
+        public async Task<CategoriaProdutoDto> Get(int categoriaId)
         {
             var categoria = await _categoriaProdutoService.ObterCategoriaProduto(categoriaId);
-            return _mapper.Map<CategoriaProdutoDTO>(categoria);
+            return _mapper.Map<CategoriaProdutoDto>(categoria);
         }
 
         /// <summary>
@@ -57,9 +57,9 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, categoria cadastrada</response>
         /// <response code="500">Erro ao cadastrar categoria</response>
         [HttpPost]
-        [ProducesResponseType(typeof(CategoriaProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(CategoriaProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task Post([FromBody] CategoriaProdutoDTO categoriaDTO)
+        public async Task Post([FromBody] CategoriaProdutoDto categoriaDTO)
         {
             var categoria = _mapper.Map<CategoriaProduto>(categoriaDTO);
             await _categoriaProdutoService.CadastrarCategoriaProduto(categoria);
@@ -71,9 +71,9 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Categoria atualizada</response>
         /// <response code="500">Erro ao atualizar categoria</response>
         [HttpPut]
-        [ProducesResponseType(typeof(CategoriaProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(CategoriaProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task Put([FromBody] CategoriaProdutoDTO categoriaDTO)
+        public async Task Put([FromBody] CategoriaProdutoDto categoriaDTO)
         {
             var categoria = _mapper.Map<CategoriaProduto>(categoriaDTO);
             await _categoriaProdutoService.AtualizarCategoriaProduto(categoria);
@@ -85,7 +85,7 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Categoria removida</response>
         /// <response code="500">Erro ao remover categoria</response>
         [HttpDelete("{categoriaId:int:required}")]
-        [ProducesResponseType(typeof(CategoriaProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(CategoriaProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
         public async Task Delete(int categoriaId)
         {

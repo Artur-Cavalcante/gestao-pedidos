@@ -11,15 +11,15 @@ namespace GestaoPedidos.Application.Mappings
     {
         public ProdutoMappingProfile()
         {
-            CreateMap<Produto, ProdutoDTO>();
+            CreateMap<Produto, ProdutoDto>();
             CreateMap<Produto, ProdutoEntity>();
             CreateMap<ProdutoEntity, Produto>().ConstructUsing(p => new Produto(p.Id, p.Nome, p.Status, p.IdCategoria, p.Preco));
-            CreateMap<ProdutoDTO, Produto>().ConstructUsing(p => new Produto(p.Id, p.Nome, p.Status, p.IdCategoria, p.Preco));
+            CreateMap<ProdutoDto, Produto>().ConstructUsing(p => new Produto(p.Id, p.Nome, p.Status, p.IdCategoria, p.Preco));
 
-            CreateMap<CategoriaProduto, CategoriaProdutoDTO>();
+            CreateMap<CategoriaProduto, CategoriaProdutoDto>();
             CreateMap<CategoriaProduto, CategoriaProdutoEntity>();
             CreateMap<CategoriaProdutoEntity, CategoriaProduto>().ConstructUsing(c => new CategoriaProduto(c.Id, c.Nome));
-            CreateMap<CategoriaProdutoDTO, CategoriaProduto>().ConstructUsing(c => new CategoriaProduto(c.Id, c.Nome));
+            CreateMap<CategoriaProdutoDto, CategoriaProduto>().ConstructUsing(c => new CategoriaProduto(c.Id, c.Nome));
         }
     }
 }

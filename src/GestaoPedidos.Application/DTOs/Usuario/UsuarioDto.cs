@@ -4,7 +4,7 @@ namespace GestaoPedidos.Application.DTOs.Usuario
 {
     
 [ExcludeFromCodeCoverage]
-public class UsuarioDTO
+public class UsuarioDto
     {
         public int Id { get; set; }
         public string Nome { get; set; } = string.Empty;

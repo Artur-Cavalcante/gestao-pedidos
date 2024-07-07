@@ -28,12 +28,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Produtos consultados</response>
         /// <response code="404">Produtos nao encontrados</response>
         [HttpGet]
-        [ProducesResponseType(typeof(ProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(ProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<IEnumerable<ProdutoDTO>> Get()
+        public async Task<IEnumerable<ProdutoDto>> Get()
         {
             var produtos = await _produtoService.ObterProduto();
-            return _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
+            return _mapper.Map<IEnumerable<ProdutoDto>>(produtos);
         }
 
         /// <summary>
@@ -43,12 +43,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Produto consultado</response>
         /// <response code="404">Produto nao encontrado</response>
         [HttpGet("{produtoId:int:required}")]
-        [ProducesResponseType(typeof(ProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(ProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<ProdutoDTO> Get(int produtoId)
+        public async Task<ProdutoDto> Get(int produtoId)
         {
             var produto = await _produtoService.ObterProduto(produtoId);
-            return _mapper.Map<ProdutoDTO>(produto);
+            return _mapper.Map<ProdutoDto>(produto);
         }
 
         /// <summary>
@@ -58,12 +58,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Produtos por categoria consultado</response>
         /// <response code="404">Produtos nao encontrados para categoria</response>
         [HttpGet("categoria/{categoriaId:int:required}")]
-        [ProducesResponseType(typeof(ProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(ProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<IEnumerable<ProdutoDTO>> GetPor(int categoriaId)
+        public async Task<IEnumerable<ProdutoDto>> GetPor(int categoriaId)
         {
             var produtos = await _produtoService.ObterProdutoPorCategoria(categoriaId);
-            return _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
+            return _mapper.Map<IEnumerable<ProdutoDto>>(produtos);
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, produto cadastrada</response>
         /// <response code="500">Erro ao cadastrar produto</response>
         [HttpPost]
-        [ProducesResponseType(typeof(ProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(ProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task Post([FromBody] ProdutoDTO produtoDTO)
+        public async Task Post([FromBody] ProdutoDto produtoDTO)
         {
             var produto = _mapper.Map<Produto>(produtoDTO);
             await _produtoService.CadastrarProduto(produto);
@@ -86,9 +86,9 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Produto atualizado</response>
         /// <response code="500">Erro ao atualizar produto</response>
         [HttpPut]
-        [ProducesResponseType(typeof(ProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(ProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task Put([FromBody] ProdutoDTO produtoDTO)
+        public async Task Put([FromBody] ProdutoDto produtoDTO)
         {
             var produto = _mapper.Map<Produto>(produtoDTO);
             await _produtoService.AtualizarProduto(produto);
@@ -100,7 +100,7 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Produto removido</response>
         /// <response code="500">Erro ao remover produto</response>
         [HttpDelete("{produtoId:int:required}")]
-        [ProducesResponseType(typeof(ProdutoDTO), Status200OK)]
+        [ProducesResponseType(typeof(ProdutoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
         public async Task Delete(int produtoId)
         {

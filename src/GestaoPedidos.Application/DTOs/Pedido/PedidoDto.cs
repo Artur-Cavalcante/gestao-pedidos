@@ -4,7 +4,7 @@ using GestaoPedidos.Domain.Enums;
 namespace GestaoPedidos.Application.DTOs.Pedido;
 
 [ExcludeFromCodeCoverage]
-public class PedidoDTO
+public class PedidoDto
 {
     public int Id { get; set; }
     public DateTime DataPedido { get; set; }

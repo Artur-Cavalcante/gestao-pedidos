@@ -107,7 +107,7 @@ namespace GestaoPedidos.Tests
         }
 
         [Fact]
-        public async Task ProximaEtapaPedido_CallsUpdateMethod_WithCorrectParameters()
+        public void ProximaEtapaPedido_CallsUpdateMethod_WithCorrectParameters()
         {
             // Arrange
             var pedidoId = 1;

@@ -4,7 +4,7 @@ using GestaoPedidos.Domain.Enums;
 namespace GestaoPedidos.Application.DTOs.Pedido;
 
 [ExcludeFromCodeCoverage]
-public class AtualizarPedidoDTO
+public class AtualizarPedidoDto
 {
     public int Id { get; set; }
     public DateTime DataPedido { get; set; }

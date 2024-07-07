@@ -28,12 +28,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Pagamentos consultados</response>
         /// <response code="404">Pagamentos nao encontrados</response>
         [HttpGet]
-        [ProducesResponseType(typeof(PagamentoDTO), Status200OK)]
+        [ProducesResponseType(typeof(PagamentoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<IEnumerable<PagamentoDTO>> Get()
+        public async Task<IEnumerable<PagamentoDto>> Get()
         {
             var pagamentos = await _pagamentoService.ObterPagamento();
-            return _mapper.Map<IEnumerable<PagamentoDTO>>(pagamentos);
+            return _mapper.Map<IEnumerable<PagamentoDto>>(pagamentos);
         }
 
         /// <summary>
@@ -43,12 +43,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Pagamento consultado</response>
         /// <response code="404">Pagamento nao encontrado</response>
         [HttpGet("{pagamentoId:int:required}")]
-        [ProducesResponseType(typeof(PagamentoDTO), Status200OK)]
+        [ProducesResponseType(typeof(PagamentoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<PagamentoDTO> Get(int pagamentoId)
+        public async Task<PagamentoDto> Get(int pagamentoId)
         {
             var pagamento = await _pagamentoService.ObterPagamento(pagamentoId);
-            return _mapper.Map<PagamentoDTO>(pagamento);
+            return _mapper.Map<PagamentoDto>(pagamento);
         }
 
         /// <summary>
@@ -58,12 +58,12 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Pagamentos por pedido consultado</response>
         /// <response code="404">Pagamentos nao encontrados para pedido</response>
         [HttpGet("pedido/{pedidoId:int:required}")]
-        [ProducesResponseType(typeof(PagamentoDTO), Status200OK)]
+        [ProducesResponseType(typeof(PagamentoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task<IEnumerable<PagamentoDTO>> GetPor(int pedidoId)
+        public async Task<IEnumerable<PagamentoDto>> GetPor(int pedidoId)
         {
             var pagamentos = await _pagamentoService.ObterPagamentoPorPedido(pedidoId);
-            return _mapper.Map<IEnumerable<PagamentoDTO>>(pagamentos);
+            return _mapper.Map<IEnumerable<PagamentoDto>>(pagamentos);
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, pagamento cadastrada</response>
         /// <response code="500">Erro ao cadastrar pagamento</response>
         [HttpPost]
-        [ProducesResponseType(typeof(PagamentoDTO), Status200OK)]
+        [ProducesResponseType(typeof(PagamentoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task Post([FromBody] PagamentoDTO pagamentoDTO)
+        public async Task Post([FromBody] PagamentoDto pagamentoDTO)
         {
             var pagamento = _mapper.Map<Pagamento>(pagamentoDTO);
             await _pagamentoService.CadastrarPagamento(pagamento);
@@ -86,9 +86,9 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Pagamento atualizado</response>
         /// <response code="500">Erro ao atualizar pagamento</response>
         [HttpPut]
-        [ProducesResponseType(typeof(PagamentoDTO), Status200OK)]
+        [ProducesResponseType(typeof(PagamentoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
-        public async Task Put([FromBody] PagamentoDTO pagamentoDTO)
+        public async Task Put([FromBody] PagamentoDto pagamentoDTO)
         {
             var pagamento = _mapper.Map<Pagamento>(pagamentoDTO);
             await _pagamentoService.AtualizarPagamento(pagamento);
@@ -100,7 +100,7 @@ namespace GestaoPedidos.Web.Controllers
         /// <response code="200">OK, Pagamento removido</response>
         /// <response code="500">Erro ao remover pagamento</response>
         [HttpDelete("{pagamentoId:int:required}")]
-        [ProducesResponseType(typeof(PagamentoDTO), Status200OK)]
+        [ProducesResponseType(typeof(PagamentoDto), Status200OK)]
         [ProducesResponseType(typeof(void), Status404NotFound)]
         public async Task Delete(int pagamentoId)
         {

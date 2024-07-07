@@ -3,7 +3,7 @@
 namespace GestaoPedidos.Application.DTOs.Promocao
 {
 [ExcludeFromCodeCoverage]
-public class HistoricoUsoPromocaoDTO
+public class HistoricoUsoPromocaoDto
     {
         public int IdPromocao { get; set; }
         public int IdCliente { get; set; }
