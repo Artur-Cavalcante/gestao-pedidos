@@ -32,7 +32,6 @@ jobs:
           SONAR_QUALITY_PROFILE: 'default'
         with:
           args: >
-            -Dsonar.verbose=true
             -Dsonar.projectKey=gestao-pedidos-pedido
         
 
