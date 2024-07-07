@@ -12,25 +12,52 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          # Disabling shallow clones is recommended for improving the relevancy of reporting
+          fetch-depth: 0
+          
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Sonarqube Begin
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet sonarscanner begin
+            /o:fiap 
+            /k:gestao-pedidos-pedido 
+            /d:sonar.login=sqa_b632c864822aeae6d1e1c5f000363596eeb65460
+            /d:sonar.verbose=true
+            /d:sonar.dotnet.excludeTestProjects=true
+            /d:sonar.host.url=http://54.161.116.110:9000
       
-      - name: Generate Coverage Xml
+      - name: Dotnet Build
+        run: |
+          dotnet build .
+      
+      - name: Generate Test Coverage
         run: |
           dotnet test --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
-      - name: Upload SonarQube analysis
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: sqa_b632c864822aeae6d1e1c5f000363596eeb65460
-          SONAR_HOST_URL: http://54.161.116.110:9000 
-          SONAR_PROJECT_KEY: gestao-pedidos-pedido 
-          SONAR_ORGANIZATION_KEY: fiap
-          SONAR_QUALITY_PROFILE: 'default'
-        with:
-          args: >
-            -Dsonar.projectKey=gestao-pedidos-pedido
-            -Dsonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.json
-            -Dsonar.tests=./src/GestaoPedidos.Test
-            -Dsonar.verbose=true
+      - name: Sonarqube End
+        run: |
+          run: dotnet sonarscanner end /d:sonar.login=sqa_b632c864822aeae6d1e1c5f000363596eeb65460
+          
+#      - name: Upload SonarQube analysis
+#        uses: sonarsource/sonarqube-scan-action@master
+#        env:
+#          SONAR_TOKEN: sqa_b632c864822aeae6d1e1c5f000363596eeb65460
+#          SONAR_HOST_URL: http://54.161.116.110:9000 
+#          SONAR_PROJECT_KEY: gestao-pedidos-pedido 
+#          SONAR_ORGANIZATION_KEY: fiap
+#          SONAR_QUALITY_PROFILE: 'default'
+#        with:
+#          args: >
+#            -Dsonar.projectKey=gestao-pedidos-pedido
+#            -Dsonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.json
+#            -Dsonar.tests=./src/GestaoPedidos.Test
+#            -Dsonar.verbose=true
             
         #-Dsonar.coverage.exclusions=true
         #-Dsonar.coverage.exclusions=true
