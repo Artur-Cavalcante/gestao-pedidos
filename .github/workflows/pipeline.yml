@@ -35,6 +35,7 @@ jobs:
             -Dsonar.projectKey=gestao-pedidos-pedido
             -Dsonar.cs.opencover.reportsPaths=src/**/*.coverage
             -Dsonar.tests=src/GestaoPedidos.Test
+            -Dsonar.verbose=true
         
 
       - name: Configure AWS credentials
