@@ -8,21 +8,16 @@ namespace GestaoPedidos.Application.Services
     public class PedidoService : IPedidoService
     {
         private readonly IPedidoRepository _pedidoRepository;
-        private readonly IClienteRepository _clienteRepository;
         private readonly IProdutoRepository _produtoRepository;
 
-        public PedidoService(IPedidoRepository pedidoRepository, IClienteRepository clienteRepository, IProdutoRepository produtoRepository)
+        public PedidoService(IPedidoRepository pedidoRepository, IProdutoRepository produtoRepository)
         {
             _pedidoRepository = pedidoRepository;
-            _clienteRepository = clienteRepository;
             _produtoRepository = produtoRepository;
         }
 
         public async Task<int> CadastrarPedido(int idCliente, IEnumerable<int> produtoList)
         {
-            if (_clienteRepository.NaoExiste(idCliente))
-                throw new ArgumentException("Cliente informado não existe");
-
             var pedido = await ComplementaDadosPeddidoAsync(idCliente, produtoList);
             _pedidoRepository.Inserir(pedido, produtoList);
             _pedidoRepository.SaveChanges();

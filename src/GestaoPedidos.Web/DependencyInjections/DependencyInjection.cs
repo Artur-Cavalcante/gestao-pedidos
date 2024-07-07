@@ -10,16 +10,7 @@ namespace GestaoPedidos.Web.DependencyInjections
         {
             services.AddTransient<IProdutoService, ProdutoService>();
             services.AddTransient<ICategoriaProdutoService, CategoriaProdutoService>();
-
-            services.AddTransient<IUsuarioService, UsuarioService>();
-            services.AddTransient<IClienteService, ClienteService>();
-
             services.AddTransient<IPedidoService, PedidoService>();
-
-            services.AddTransient<IPromocaoService, PromocaoService>();
-            services.AddTransient<IItemPromocaoService, ItemPromocaoService>();
-            services.AddTransient<IHistoricoUsoPromocaoService, HistoricoUsoPromocaoService>();
-
             services.AddTransient<IPagamentoService, PagamentoService>();
         }
 

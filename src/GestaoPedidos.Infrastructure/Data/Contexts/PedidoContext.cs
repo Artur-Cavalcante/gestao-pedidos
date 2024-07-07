@@ -14,9 +14,6 @@ public class PedidoContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
         ConfigureMap.Config(modelBuilder);
-
-
     }
 }
