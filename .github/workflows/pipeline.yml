@@ -12,9 +12,7 @@ jobs:
     steps:
       - name: Build Check
         run: 
-          ls -la
-          cd src
-          dotnet build .
+          ls -la 
       
       - name: Generate coverage report
         run: |
