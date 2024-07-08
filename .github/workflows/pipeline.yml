@@ -47,21 +47,12 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-
-      - name: Login to Amazon ECR
-        run: aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 547185396737.dkr.ecr.us-east-2.amazonaws.com
-
-      - name: Create ECR Repository
+          aws-region: us-east-1
+    
+      - name: Install dotnet Lambda
         run: |
-          aws ecr create-repository --repository-name gestao-pedidos
+          dotnet tool install --global Amazon.Lambda.Tools
 
-      - name: Build and push Docker image
+      - name: Deploy lambda
         run: |
-          docker build -t 547185396737.dkr.ecr.us-east-2.amazonaws.com/gestao-pedidos:latest .
-          docker push 547185396737.dkr.ecr.us-east-2.amazonaws.com/gestao-pedidos:latest
-
-      - name: Deploy to EKS
-        run: |
-          terraform init
-          terraform apply -auto-approve
+          dotnet lambda deploy-serverless --region us-east-1 --stack-name gestao-pedidos-web-deploy --template serverless.template --s3-bucket gestao-pedidos-web-lambda 
