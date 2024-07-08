@@ -55,4 +55,4 @@ jobs:
 
       - name: Deploy lambda
         run: |
-          dotnet lambda deploy-serverless --region us-east-1 --stack-name gestao-pedidos-web-deploy --template serverless.template --s3-bucket gestao-pedidos-web-lambda 
+          dotnet lambda deploy-serverless --region us-east-1 --stack-name gestao-pedidos-web-deploy --template ./src/GestaoPedidos.Web/serverless.template --s3-bucket gestao-pedidos-web-lambda 
