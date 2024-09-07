@@ -11,12 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          # Disabling shallow clones is recommended for improving the relevancy of reporting
-          fetch-depth: 0
-          
-      - name: Setup dotnet
+        uses: act/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '8.0.x'
@@ -34,7 +29,7 @@ jobs:
         run: |
           dotnet test --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
-      - name: List
+      - name: List 
         run:
           ls -la ./src/GestaoPedidos.Test/
 
