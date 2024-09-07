@@ -11,7 +11,6 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: act/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '8.0.x'
@@ -29,7 +28,7 @@ jobs:
         run: |
           dotnet test --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
-      - name: List 
+      - name: List
         run:
           ls -la ./src/GestaoPedidos.Test/
 
