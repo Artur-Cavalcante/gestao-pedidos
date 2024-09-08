@@ -15,14 +15,6 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Dotnet Build
-        run: |
-          dotnet build .
-
-      - name: List
-        run:
-          ls -la ./src/GestaoPedidos.Test/
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
