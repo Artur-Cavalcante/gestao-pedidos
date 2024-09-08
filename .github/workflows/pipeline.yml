@@ -15,17 +15,16 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-    
-      - name: Install dotnet Lambda
+      - name: Zip
         run: |
-          dotnet tool install --global Amazon.Lambda.Tools
+          zip -r -9 gestao-pedidos-web-deploy-AspNetCoreFunction-N79gD0HGX7j2.zip *
 
-      - name: Deploy lambda
-        run: |
-          dotnet lambda deploy-serverless --region us-east-1 --stack-name gestao-pedidos-web-deploy --template ./src/GestaoPedidos.Web/serverless.template --s3-bucket gestao-pedidos-web-lambda 
+      - name: Update
+        uses: kazimanzurrashid/aws-lambda-update-action@v2.0.2
+        with:
+          zip-file: gestao-pedidos-web-deploy-AspNetCoreFunction-N79gD0HGX7j2.zip
+        env:
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ 
